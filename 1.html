@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection"content="telephone=no, email=no" />
+	<link rel="apple-touch-startup-image" href="/startup.png">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<style type="text/css">
+		.header,.footer{position:fixed;text-align: center; height:48px; background-color:rgba(255,255,255,0.8); width: 100%;}
+		.header{ top: 0;border-bottom: 1px solid #ccc;}
+		.footer{ bottom:0;border-top: 1px solid #ccc;}
+		.wrap-page{ position:absolute; top: 48px;bottom: 48px;width: 100%;}
+		.overlay{z-index: 1000; position:absolute; top: 0;left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.5);}
+		.layer_con{ position: absolute; width: 60%; height: 50%; background-color: #fff;top: 50%; left: 50%; -webkit-transform:translateX(-50%,-50%); transform:translate(-50%,-50%); border-radius: 10px;}
+		.a1{
+			-webkit-transform:translate(60px);
+			-webkit-animation:animations 2s ease-out;
+			transform:translate(55px);
+			animation:animations 2s ease-out;
+		}
+		@-webkit-keyframes animations{
+			0%{-webkit-transform:translate(0);opacity:0;}
+			50%{-webkit-transform:translate(30px);opacity:1;}
+			70%{-webkit-transform:translate(35px);opacity:1;}
+			100%{-webkit-transform:translate(60px);opacity:0;}
+		}
+		@keyframes animations{
+			0%{transform:translate(0);opacity:0;}
+			50%{transform:translate(30px);opacity:1;}
+			70%{transform:translate(35px);opacity:1;}
+			100%{transform:translate(60px);opacity:0;}
+		}
+
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			document.getElementById("a1").addEventListener("webkitAnimationStart",function(){ console.log("begin")})
+			document.getElementById("a1").addEventListener("webkitAnimationIteration",function(){ console.log("animating")})
+			document.getElementById("a1").addEventListener("webkitAnimationEnd",function(){ console.log("end")})
+		}
+	</script>
+</head>
+<body>
+	<header class="header">header</header>
+	<section class="wrap-page">
+		<div class="overlay">
+			<div class="modal">
+				<div class="layer_con"><span class="a1" id="a1">CSS3 Animations</span></div>
+			</div>
+		</div>
+	</section>
+	<footer class="footer">footer</footer>
+</body>
+</html>
